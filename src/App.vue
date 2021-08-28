@@ -1,0 +1,31 @@
+<template>
+    <router-view></router-view>
+</template>
+
+<script lang="ts">
+    import { defineComponent, onMounted, computed, provide } from "vue";
+    import { store } from "@/store";
+    import { localData } from "@/utils/storage";
+
+    export default defineComponent({
+        name: "App",
+        setup() {
+            const loginInfo = computed(() => store.state.user.loginInfo);
+            //全局共享登陆信息
+            provide("loginInfo", loginInfo);
+
+            onMounted(() => {
+                const classList = document.body.classList;
+                classList.add(localData.get("appTheme"));
+            })
+
+            return {
+                loginInfo,
+            };
+        },
+    });
+</script>
+
+<style lang="less">
+    @import "./themes/style.less";
+</style>

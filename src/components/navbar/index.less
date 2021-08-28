@@ -1,0 +1,27 @@
+﻿.cat-navbar {
+    display: flex;
+    font-size: .36rem;
+    background-color: #fff;
+
+    &__left, &__center, &__right {
+        flex: 1;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        height: .88rem;
+    }
+
+    &__left {
+        > div {
+            margin-right: auto;
+            margin-left: .28rem;
+        }
+    }
+
+    &__right {
+        > div {
+            margin-left: auto;
+            margin-right: .28rem;
+        }
+    }
+}

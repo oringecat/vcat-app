@@ -1,0 +1,27 @@
+.slide-right-enter-active, .slide-right-leave-active, .slide-left-enter-active, .slide-left-leave-active {
+    will-change: transform;
+    transition: transform 250ms;
+    position: absolute;
+    pointer-events: none;
+    background-color: #fff;
+}
+
+.slide-right-enter-from {
+    z-index: 1;
+    transform: translate3d(-100%, 0, 0);
+}
+
+.slide-right-leave-active {
+    transition-delay: 35ms;
+    transform: translate3d(100%, 0, 0);
+}
+
+.slide-left-enter-from {
+    z-index: 1;
+    transform: translate3d(100%, 0, 0);
+}
+
+.slide-left-leave-active {
+    transition-delay: 35ms;
+    transform: translate3d(-100%, 0, 0);
+}

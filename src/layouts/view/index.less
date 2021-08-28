@@ -1,0 +1,25 @@
+﻿.cat-view {
+    display: flex;
+    flex-direction: column;
+
+    &__header {
+        &:empty {
+            display: none;
+        }
+    }
+
+    &__container {
+        flex: 1;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    &__footer {
+        &:empty {
+            display: none;
+        }
+
+        background-color: #000;
+        color: #fff;
+    }
+}

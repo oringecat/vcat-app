@@ -1,0 +1,146 @@
+﻿@import '../../themes/base/iconfont.less';
+
+//导航图标动画Demo
+@keyframes icon-scale {
+    0% {
+        transform: scale3d(1.3,1.3,1.3);
+    }
+
+    50% {
+        transform: scale3d(.5,.5,.5);
+    }
+
+    100% {
+        transform: scale3d(1,1,1);
+    }
+}
+
+.home {
+    &-index {
+        display: flex;
+        flex-direction: column;
+
+        &__warpper {
+            flex: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        &__tabbar {
+            .icon {
+                color: #777;
+            }
+
+            .icon.active {
+                color: crimson;
+            }
+            //激活图片图标动画
+            .icon.active img {
+                animation: icon-scale 300ms;
+            }
+            //激活字体图标动画
+            .icon--font.active::before {
+                animation: icon-scale 300ms;
+            }
+
+            .icon-index.active {
+                color: crimson;
+            }
+
+            .icon-mall::before {
+                .mixin-iconfont('\e696');
+            }
+
+            .icon-mall.active::before {
+                .mixin-iconfont('\e697');
+            }
+
+            .icon-cart::before {
+                .mixin-iconfont('\e69a');
+            }
+
+            .icon-cart.active::before {
+                .mixin-iconfont('\e699');
+            }
+
+            .icon-mine::before {
+                .mixin-iconfont('\e6b5');
+            }
+
+            .icon-mine.active::before {
+                .mixin-iconfont('\e6b6');
+            }
+        }
+    }
+
+    &-main {
+        .van-pull-refresh {
+            min-height: 100%;
+        }
+
+        .van-swipe {
+            border-radius: .12rem;
+
+            &-item {
+                color: #fff;
+                font-size: .36rem;
+                line-height: 150px;
+                text-align: center;
+                background-color: #39a9ed;
+            }
+        }
+
+        .desc {
+            color: #222;
+            background-color: #fff;
+            border-radius: .12rem;
+            border-radius: .12rem;
+            margin-top: .2rem;
+            padding: .32rem;
+
+            dt {
+                border-bottom: 1px solid #eee;
+                padding-bottom: .32rem;
+
+                span {
+                    display: block;
+                    font-size: .36rem;
+                    font-weight: bold;
+
+                    + span {
+                        color: #ccc;
+                        font-size: .24rem;
+                        font-weight: normal;
+                        margin-top: .1rem;
+                    }
+                }
+            }
+
+            dd {
+                font-size: .32rem;
+                margin-top: .56rem;
+
+                h2 {
+                    font-size: .32rem;
+                    font-weight: bold;
+                }
+
+                p {
+                    color: #333;
+                    line-height: .48rem;
+                    margin-top: .2rem;
+                }
+            }
+        }
+    }
+
+    &-mall {
+        .van-button {
+            margin-top: 16px;
+        }
+    }
+
+    &-cart {
+        background-color: #fff;
+    }
+}
