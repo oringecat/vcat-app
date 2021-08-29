@@ -8,16 +8,17 @@ import { CompatVue, Component } from "vue";
 import statusbar from "./statusbar/index.vue";
 import navbar from "./navbar/index.vue";
 import tabbar from "./tabbar/index.vue";
+import scrollbar from "./scrollbar/index.vue";
 import guide from "./guide/index.vue";
 
-const components = [statusbar, navbar, tabbar, guide];
+const components = [statusbar, navbar, tabbar, scrollbar, guide];
 
 const install: Component = (app: CompatVue) => {
-  components.map((component) => {
-    app.component(component.name, component); //注册全局组件
-  });
+    components.map((component) => {
+        app.component(component.name, component); //注册全局组件
+    });
 };
 
 export default {
-  install,
+    install,
 };
