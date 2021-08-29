@@ -17,10 +17,10 @@
 
     import { defineComponent, ref, reactive } from "vue";
     import { localData } from "@/utils/storage";
-    import index from "./home-main.vue";
-    import mall from "./home-mall.vue";
-    import cart from "./home-cart.vue";
-    import mine from "./home-mine.vue";
+    import index from "./components/main/index.vue";
+    import mall from "./components/mall/index.vue";
+    import cart from "./components/cart/index.vue";
+    import mine from "./components/mine/index.vue";
 
     export default defineComponent({
         name: "HomeIndex",
@@ -70,6 +70,6 @@
     });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
     @import "./home.less";
 </style>

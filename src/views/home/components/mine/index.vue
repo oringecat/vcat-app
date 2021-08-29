@@ -58,6 +58,6 @@
     });
 </script>
 
-<style lang="less">
-    @import "./home.less";
+<style lang="less" scoped>
+    @import "./index.less";
 </style>

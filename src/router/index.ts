@@ -2,7 +2,7 @@ import { createWebHashHistory, RouteRecordRaw } from "vue-router";
 import { initRouter } from "vcat-history";
 import { clearPending } from "@/api/service";
 import { store } from "@/store";
-import page from "@/layouts/page/index.vue";
+import Page from "@/layouts/page/index.vue";
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -12,7 +12,7 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: "/",
         redirect: "/home",
-        component: page,
+        component: Page,
         children: [
             {
                 path: "",
@@ -23,7 +23,7 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
         path: "/user",
-        component: page,
+        component: Page,
         children: [
             {
                 path: "",
@@ -44,7 +44,7 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
         path: "/product",
-        component: page,
+        component: Page,
         children: [
             {
                 path: "",
@@ -60,7 +60,7 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
         path: "/notice",
-        component: page,
+        component: Page,
         children: [
             {
                 path: "",
