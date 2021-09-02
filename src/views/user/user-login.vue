@@ -55,7 +55,7 @@
                     },
                     success: (res) => {
                         notify({ type: "success", message: "登录成功" });
-                        store.dispatch("user/setLoginInfo", res.data);
+                        store.dispatch("user/login", res.data);
 
                         const redirect = route.query.redirect;
                         if (redirect) {
@@ -91,7 +91,7 @@
                 });
 
                 setTimeout(() => {
-                    store.dispatch("user/setLoginInfo", {
+                    store.dispatch("user/login", {
                         id: 1001,
                         account: "admin",
                         realname: "超级管理员",

@@ -37,9 +37,9 @@ interface IQueryParams<T> {
 }
 
 //请求参数
-interface IHttpParams<T> {
+interface IHttpParams<T = undefined> {
     responseType?: ResponseType;
-    data: T;
+    data?: T;
     success?: (res: IHttpResult) => void;
     fail?: (err: IHttpResult) => void;
     complete?: () => void;
@@ -52,9 +52,9 @@ function http<T>(url: string, method: Method, params: IHttpParams<T>): void {
     };
 
     if (["post", "POST", "put", "PUT", "patch", "PATCH"].includes(method)) {
-        config.data = params.data;
+        config.data = params.data ?? {};
     } else {
-        config.params = params.data;
+        config.params = params.data ?? {};
     }
 
     store.dispatch("app/setLoading", true); //正在加载

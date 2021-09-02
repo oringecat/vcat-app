@@ -14,7 +14,7 @@ interface IUser {
     passwordHash?: string;
 }
 
-class User extends Model<IUser> {
+class User extends Model<IUser> implements IUser {
     id = 0;
     account = "";
     password = "";

@@ -4,26 +4,61 @@
  * date: 2021-08-27
  */
 
-const config = {
-    appTheme: "theme-default", // 应用主题
-    bootAd: true // 应用启动广告
+export const appStorage = {
+    // 应用启动广告
+    bootAd: true,
+    // 系统主题
+    appTheme: "theme-default",
+    // 用户登录信息
+    loginInfo: {
+        id: 0,
+        account: "guest",
+        realName: "访客",
+        token: "",
+    },
+    // 用户自动登录
+    autoLogin: false
 }
 
-type ConfigType = typeof config; // 获取对象类型
+type AppStorage = typeof appStorage; // 获取对象类型
 //type ConfigValueType = configType[keyof configType]; // 获取对象所有值类型
 
-export const localData = {
-    get<Key extends keyof ConfigType>(key: Key): ConfigType[Key] {
-        const data = localStorage.getItem(key);
+const storageData = {
+    get<Key extends keyof AppStorage>(storage: Storage, key: Key): AppStorage[Key] {
+        const data = storage.getItem(key);
         if (data !== "undefined" && data !== null) {
-            return JSON.parse(data) as ConfigType[Key];
+            return JSON.parse(data) as AppStorage[Key];
         }
-        return config[key];
+        return appStorage[key];
     },
-    set<Key extends keyof ConfigType>(key: Key, value: ConfigType[Key]): void {
+    set<Key extends keyof AppStorage>(storage: Storage, key: Key, value: AppStorage[Key]): void {
         if (value !== undefined && value !== null) {
             const str = JSON.stringify(value);
-            localStorage.setItem(key, str);
+            storage.setItem(key, str);
         }
+    }
+}
+
+export const localData = {
+    get<Key extends keyof AppStorage>(key: Key): AppStorage[Key] {
+        return storageData.get(localStorage, key);
+    },
+    set<Key extends keyof AppStorage>(key: Key, value: AppStorage[Key]): void {
+        storageData.set(localStorage, key, value);
+    },
+    remove<Key extends keyof AppStorage>(key: Key): void {
+        localStorage.removeItem(key);
+    }
+}
+
+export const sessionData = {
+    get<Key extends keyof AppStorage>(key: Key): AppStorage[Key] {
+        return storageData.get(sessionStorage, key);
+    },
+    set<Key extends keyof AppStorage>(key: Key, value: AppStorage[Key]): void {
+        storageData.set(sessionStorage, key, value);
+    },
+    remove<Key extends keyof AppStorage>(key: Key): void {
+        sessionStorage.removeItem(key);
     }
 }
