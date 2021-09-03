@@ -16,7 +16,7 @@
      */
 
     import { defineComponent, ref, reactive } from "vue";
-    import { localData } from "@/utils/storage";
+    import { localData } from "@/lib/storage";
     import index from "./components/main/index.vue";
     import mall from "./components/mall/index.vue";
     import cart from "./components/cart/index.vue";

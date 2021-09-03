@@ -6,7 +6,7 @@
 
 import { Module } from "vuex";
 import { IGlobalState } from "./interface";
-import { appStorage, localData, sessionData } from "@/utils/storage";
+import { appStorage, localData, sessionData } from "@/lib/storage";
 
 interface IUserState {
     loginInfo: typeof appStorage.loginInfo;

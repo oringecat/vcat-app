@@ -5,7 +5,7 @@
 <script lang="ts">
     import { defineComponent, onMounted, computed, provide } from "vue";
     import { store } from "@/store";
-    import { localData } from "@/utils/storage";
+    import { localData } from "@/lib/storage";
 
     export default defineComponent({
         name: "App",

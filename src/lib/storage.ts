@@ -21,7 +21,7 @@ export const appStorage = {
 }
 
 type AppStorage = typeof appStorage; // 获取对象类型
-//type ConfigValueType = configType[keyof configType]; // 获取对象所有值类型
+//type AppStorageKey = AppStorage[keyof AppStorage]; // 获取对象所有值类型
 
 const storageData = {
     get<Key extends keyof AppStorage>(storage: Storage, key: Key): AppStorage[Key] {

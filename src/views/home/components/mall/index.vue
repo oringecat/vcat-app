@@ -21,7 +21,7 @@
 
     import { defineComponent, ref } from "vue";
     import { Grid, GridItem, Button, ActionSheet, Dialog } from "vant";
-    import { localData } from "@/utils/storage";
+    import { localData } from "@/lib/storage";
     import mixin from "@/utils/mixin";
 
     export default defineComponent({
