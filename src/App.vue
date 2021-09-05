@@ -11,17 +11,13 @@
         name: "App",
         setup() {
             const loginInfo = computed(() => store.state.user.loginInfo);
-            //全局共享登陆信息
+            // 全局共享登陆信息
             provide("loginInfo", loginInfo);
 
             onMounted(() => {
                 const classList = document.body.classList;
                 classList.add(localData.get("appTheme"));
             })
-
-            return {
-                loginInfo,
-            };
         },
     });
 </script>

@@ -11,10 +11,10 @@ import { store } from "@/store";
 import { Toast } from "vant";
 Toast.allowMultiple();
 
-//请求列表
+// 请求列表
 const pending = new Map();
 
-//添加请求
+// 添加请求
 const addPending = (config: AxiosRequestConfig) => {
     const url = [
         config.method,
@@ -32,7 +32,7 @@ const addPending = (config: AxiosRequestConfig) => {
         });
 };
 
-//移除请求
+// 移除请求
 const removePending = (config: AxiosRequestConfig) => {
     const url = [
         config.method,
@@ -48,7 +48,7 @@ const removePending = (config: AxiosRequestConfig) => {
     }
 };
 
-//清空等待中的请求（在路由跳转时调用）
+// 清空等待中的请求（在路由跳转时调用）
 export const clearPending = (): void => {
     for (const [url, cancel] of pending) {
         cancel(url);

@@ -8,8 +8,8 @@ import { http, IRequest } from "../http";
 import { IUser } from "./user";
 
 export class UserService {
-    static checkToken(): void {
-        http("/user/checktoken", "get");
+    static checkToken(params: IRequest): void {
+        http("/user/checktoken", "get", params);
     }
 
     static login(params: IRequest<IUser>): void {

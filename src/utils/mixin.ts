@@ -3,7 +3,7 @@
  * date: 2021-08-20
  */
 
-import { useRouter } from "vue-router";
+import router from '@/router'
 import { state } from "vcat-history";
 import { Notify, NotifyOptions } from "vant";
 import { hideStatusBar, showStatusBar } from "@/utils/h5plus";
@@ -15,7 +15,6 @@ interface Mixin {
 
 export default function (): Mixin {
     let notifyTimer = 0;
-    const router = useRouter();
 
     // 返回首页
     const backHome = (homePage = "/") => {
