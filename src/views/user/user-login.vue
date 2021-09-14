@@ -1,41 +1,47 @@
 ﻿<template>
     <cat-view class="user-login">
-        <template v-slot:header>
+        <template #header>
             <cat-navbar title="登录"></cat-navbar>
         </template>
-        <van-cell-group title="李兔饼" inset>
-            <van-field v-model="user.account"
-                       label="用户名"
-                       placeholder="请输入用户名" />
-            <van-field type="password"
-                       v-model="user.password"
-                       label="密码"
-                       placeholder="请输入密码" />
-        </van-cell-group>
-        <div style="margin: 16px 16px 0px">
-            <van-button type="primary" @click="login" round block>登录失败</van-button>
-            <van-button type="success" @click="loginSuccess" round block style="margin-top:16px">模拟登录成功</van-button>
-        </div>
+        <h2 style="padding: 16px; font-size: .28rem; color: #455a6499;">用户登录</h2>
+        <van-form @submit="login">
+            <van-cell-group inset>
+                <van-field v-model="user.account"
+                           name="account"
+                           label="用户名"
+                           placeholder="请输入用户名"
+                           :rules="[{ required: true, message: '随便输入' }]" />
+                <van-field v-model="user.password"
+                           name="password"
+                           type="password"
+                           label="密码"
+                           placeholder="请输入密码"
+                           :rules="[{ required: true, message: '随便输入' }]" />
+            </van-cell-group>
+            <div style="margin: 16px 16px 0px">
+                <van-button type="primary" native-type="submit" round block>登录</van-button>
+            </div>
+        </van-form>
     </cat-view>
 </template>
 
 <script lang="ts">
     import { defineComponent, reactive, computed } from "vue";
     import { useRoute, useRouter, onBeforeRouteLeave } from "vue-router";
-    import { Button, Field, CellGroup, Toast } from "vant";
+    import { Button, Field, CellGroup, Toast, Form } from "vant";
     import { store } from "@/store";
     import { User, UserService } from "@/api/user";
-    import mixin from "@/utils/mixin";
+    import { notify } from "@/utils/mixin";
 
     export default defineComponent({
         name: "UserLogin",
         components: {
+            [Form.name]: Form,
             [Button.name]: Button,
             [Field.name]: Field,
             [CellGroup.name]: CellGroup,
         },
         setup() {
-            const { notify } = mixin();
             const route = useRoute();
             const router = useRouter();
             const user = reactive(new User());
@@ -47,7 +53,7 @@
                     forbidClick: true,
                     duration: 0,
                 });
-                //请求接口
+                // 请求接口
                 UserService.login({
                     data: {
                         account: user.account,
@@ -57,12 +63,15 @@
                         notify({ type: "success", message: "登录成功" });
                         store.dispatch("user/login", res.data);
 
-                        const redirect = route.query.redirect;
-                        if (redirect) {
-                            router.replace(redirect.toString());
-                        } else {
-                            router.go(-1);
-                        }
+                        // 等待 loading 结束
+                        setTimeout(() => {
+                            const redirect = route.query.redirect;
+                            if (redirect) {
+                                router.replace(redirect.toString());
+                            } else {
+                                router.go(-1);
+                            }
+                        }, 0);
                     },
                     fail: (err) => {
                         notify({ type: "danger", message: err.message });
@@ -73,7 +82,7 @@
                 });
             };
 
-            //登录中禁止返回
+            // 登录中禁止返回
             onBeforeRouteLeave((to, from, next) => {
                 if (loading.value) {
                     next(false);
@@ -82,38 +91,9 @@
                 }
             });
 
-            //模拟登录成功
-            const loginSuccess = () => {
-                const toast = Toast.loading({
-                    message: "正在登录...",
-                    forbidClick: true,
-                    duration: 0,
-                });
-
-                setTimeout(() => {
-                    store.dispatch("user/login", {
-                        id: 1001,
-                        account: "admin",
-                        realname: "超级管理员",
-                        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
-                    });
-
-                    toast.clear();
-                    notify({ type: "success", message: "登录成功" });
-
-                    const redirect = route.query.redirect;
-                    if (redirect) {
-                        router.replace(redirect.toString());
-                    } else {
-                        router.go(-1);
-                    }
-                }, 500);
-            }
-
             return {
                 user,
                 login,
-                loginSuccess
             };
         },
     });

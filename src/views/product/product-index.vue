@@ -1,6 +1,6 @@
 ﻿<template>
     <cat-view class="product-index">
-        <template v-slot:header>
+        <template #header>
             <cat-navbar title="商品"></cat-navbar>
             <van-search v-model="keyword" placeholder="请输入搜索关键词" shape="round" />
         </template>

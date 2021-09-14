@@ -1,6 +1,4 @@
-﻿@import '../../themes/base/iconfont.less';
-
-//导航图标动画Demo
+﻿//导航图标动画Demo
 @keyframes icon-scale {
     0% {
         transform: scale3d(1.3,1.3,1.3);
@@ -26,48 +24,52 @@
     }
 
     &__tabbar {
-        .icon {
-            color: #777;
+        background: var(--tabbar-background) !important;
+
+        [class^='cat-icon-'] {
+            color: var(--tabbar-icon);
+
+            &.active {
+                color: var(--tabbar-icon-active);
+                // 图标动画
+                img {
+                    animation: icon-scale 300ms;
+                }
+                // 字体图标动画
+                &:before {
+                    animation: icon-scale 300ms;
+                }
+            }
         }
 
-        .icon.active {
-            color: crimson;
-        }
-        //激活图片图标动画
-        .icon.active img {
-            animation: icon-scale 300ms;
-        }
-        //激活字体图标动画
-        .icon--font.active::before {
-            animation: icon-scale 300ms;
+        .cat-icon-mall {
+            &:before {
+                content: "\e696";
+            }
+
+            &.active:before {
+                content: "\e697";
+            }
         }
 
-        .icon-index.active {
-            color: crimson;
+        .cat-icon-cart {
+            &:before {
+                content: "\e69a";
+            }
+
+            &.active:before {
+                content: "\e699";
+            }
         }
 
-        .icon-mall::before {
-            .mixin-iconfont('\e696');
-        }
+        .cat-icon-mine {
+            &:before {
+                content: "\e6b5";
+            }
 
-        .icon-mall.active::before {
-            .mixin-iconfont('\e697');
-        }
-
-        .icon-cart::before {
-            .mixin-iconfont('\e69a');
-        }
-
-        .icon-cart.active::before {
-            .mixin-iconfont('\e699');
-        }
-
-        .icon-mine::before {
-            .mixin-iconfont('\e6b5');
-        }
-
-        .icon-mine.active::before {
-            .mixin-iconfont('\e6b6');
+            &.active:before {
+                content: "\e6b6";
+            }
         }
     }
 }

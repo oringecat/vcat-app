@@ -1,6 +1,6 @@
 ﻿<template>
     <cat-view class="product-detail" inset>
-        <template v-slot:header>
+        <template #header>
             <cat-navbar title="详情"></cat-navbar>
         </template>
         <van-button type="primary" @click="backHome()" block>返回首页</van-button>
@@ -16,7 +16,7 @@
 
     import { defineComponent } from "vue";
     import { Button } from "vant";
-    import mixin from "@/utils/mixin";
+    import { backHome } from "@/utils/mixin";
 
     export default defineComponent({
         name: "ProductDetail",
@@ -24,8 +24,6 @@
             [Button.name]: Button,
         },
         setup() {
-            const { backHome } = mixin();
-
             return {
                 backHome,
             };

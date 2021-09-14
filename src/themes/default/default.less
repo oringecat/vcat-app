@@ -1,6 +1,24 @@
-@import '../base/variable.less';
-
 .theme-default {
+    /* 字体大小规范 */
+    --font-x-large: .36rem;
+    --font-large: .32rem;
+    --font-medium: .28rem;
+    --font-small: .24rem;
+    --font-x-small: .2rem;
+    /* 颜色规范 */
+    --color-default: #384048;
+    --color-primary: #409EFF;
+    --color-secondary: #04c786;
+    --color-info: #999;
+    --color-border: #eee;
+    /* 导航栏 */
+    --navbar-color: #333;
+    --navbar-background: #fff;
+    /* 标签栏 */
+    --tabbar-background: #fff;
+    --tabbar-icon: #777;
+    --tabbar-icon-active: red;
+
     @import './global.less';
-    font-size: @font-medium;
+    font-size: var(--font-medium);
 }

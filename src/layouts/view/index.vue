@@ -19,8 +19,7 @@
      * date: 2021-08-19
      */
 
-    import { defineComponent, reactive, watch } from "vue";
-    import { setStatusBarStyle } from "@/utils/h5plus";
+    import { defineComponent, reactive } from "vue";
 
     export default defineComponent({
         name: "CatView",
@@ -29,11 +28,6 @@
             scrollName: {
                 type: String,
                 default: "default",
-            },
-            //状态栏文字颜色
-            statusBarStyle: {
-                type: String,
-                default: "dark",
             },
             //是否使用内边距
             inset: Boolean
@@ -46,13 +40,6 @@
                     padding: '.24rem',
                 }
             }
-
-            //监听状态栏字体颜色
-            watch(() => props.statusBarStyle, (value) => {
-                setStatusBarStyle(value);
-            }, {
-                immediate: true,
-            });
 
             return {
                 styles,

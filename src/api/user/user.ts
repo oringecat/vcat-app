@@ -12,6 +12,8 @@ interface IUser {
     account?: string;
     password?: string;
     passwordHash?: string;
+    realName?: string;
+    avatar?: string;
 }
 
 class User extends Model<IUser> implements IUser {
@@ -19,6 +21,8 @@ class User extends Model<IUser> implements IUser {
     account = "";
     password = "";
     passwordHash = "";
+    avatar = "";
+    realName = "";
 
     constructor(data?: IUser) {
         super(data);

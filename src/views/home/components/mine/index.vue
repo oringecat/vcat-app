@@ -1,6 +1,6 @@
 ﻿<template>
     <cat-view class="home-mine" inset>
-        <template v-slot:header>
+        <template #header>
             <cat-navbar title="我的"></cat-navbar>
         </template>
         <van-cell-group>
@@ -28,7 +28,7 @@
     import { defineComponent, onActivated } from "vue";
     import { Cell, CellGroup } from "vant";
     import { openUrl } from "@/utils/h5plus";
-    import utils from "@/utils";
+    import { clientAgent } from "@/utils";
 
     export default defineComponent({
         name: "HomeMine",
@@ -39,7 +39,7 @@
         setup() {
             const github = "https://github.com/oringecat/vcat-app";
             const toGitHub = () => {
-                if (utils.clientAgent.isPc) {
+                if (clientAgent.isPc) {
                     window.open(github, "_blank");
                 } else {
                     openUrl(github);
@@ -58,6 +58,6 @@
     });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
     @import "./index.less";
 </style>

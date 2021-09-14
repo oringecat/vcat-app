@@ -1,6 +1,6 @@
 ﻿<template>
     <cat-view class="home-main" inset>
-        <template v-slot:header>
+        <template #header>
             <cat-navbar title="首页"></cat-navbar>
             <van-search v-model="keyword" placeholder="请输入搜索关键词" shape="round" />
         </template>
@@ -99,6 +99,6 @@
     });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
     @import "./index.less";
 </style>

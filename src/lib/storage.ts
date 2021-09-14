@@ -9,11 +9,14 @@ export const appStorage = {
     bootAd: true,
     // 系统主题
     appTheme: "theme-default",
+    // 状态栏颜色
+    statusBarStyle: "dark",
     // 用户登录信息
     loginInfo: {
         id: 0,
         account: "guest",
         realName: "访客",
+        avatar: "",
         token: "",
     },
     // 用户自动登录

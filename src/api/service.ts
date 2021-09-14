@@ -57,7 +57,7 @@ export const clearPending = (): void => {
 };
 
 const service = axios.create({
-    baseURL: "https://localhost:44314",
+    //baseURL: "https://localhost:44314",
     timeout: 30000,
 });
 
@@ -71,8 +71,7 @@ service.interceptors.request.use(
         //请求头签名
         const sign = {
             token: loginInfo.token || "",
-            signsecret:
-                "qz7qWOMXKTMT5JlDs5w4NTPwWeR3xhF1v6wqbZ9cExmP6cc3spvNAp1wJJ1SqRI5",
+            signsecret: "qz7qWOMXKTMT5JlDs5w4NTPwWeR3xhF1v6wqbZ9cExmP6cc3spvNAp1wJJ1SqRI5",
             timestamp: new Date().getTime(),
         };
         //设置请求头

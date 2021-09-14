@@ -1,5 +1,6 @@
 ﻿.cat-tabbar {
     height: 1rem;
+    background-color: #fff;
 
     &__warpper {
         bottom: 0;
@@ -7,7 +8,6 @@
         width: 100%;
         height: ~"calc(1rem - 1px)";
         border-top: 1px solid #eee;
-        background-color: #fff;
         box-sizing: content-box;
     }
 
@@ -20,15 +20,15 @@
         height: inherit;
         cursor: pointer;
 
-        .icon {
+        [class^='cat-icon-'] {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
 
             img {
-                width: .56rem !important;
-                height: .56rem !important;
+                width: .56rem;
+                height: .56rem;
                 object-fit: contain;
             }
 
@@ -37,11 +37,10 @@
                 margin-top: .05rem;
             }
 
-            &--font::before {
-                display: block;
-                width: .56rem !important;
-                height: .56rem !important;
-                font-size: .56rem !important;
+            &:before {
+                width: .56rem;
+                height: .56rem;
+                font-size: .56rem;
             }
         }
     }

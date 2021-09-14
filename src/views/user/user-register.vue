@@ -1,6 +1,6 @@
 ﻿<template>
     <cat-view class="user-register">
-        <template v-slot:header>
+        <template #header>
             <cat-navbar title="注册"></cat-navbar>
         </template>
     </cat-view>

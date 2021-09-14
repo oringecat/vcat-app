@@ -6,14 +6,14 @@
                     <slot :item="item" :index="index">
                         <!--判断是否图片图标-->
                         <template v-if="item.icon">
-                            <div :class="['icon', 'icon-' + item.name, active === index && 'active']">
-                                <img :src="item.icon.active" :alt="item.label" v-if="active === index" />
-                                <img :src="item.icon.inactive" :alt="item.label" v-else />
+                            <div :class="['cat-icon-' + item.name, active === index && 'active']">
+                                <img :src="item.icon.active" v-if="active === index" />
+                                <img :src="item.icon.inactive" v-else />
                                 <span>{{ item.label }}</span>
                             </div>
                         </template>
                         <template v-else>
-                            <div :class="['icon icon--font', 'icon-' + item.name, active === index && 'active']">
+                            <div :class="['cat-icon-' + item.name, active === index && 'active']">
                                 <span>{{ item.label }}</span>
                             </div>
                         </template>

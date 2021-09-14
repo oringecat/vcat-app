@@ -1,6 +1,6 @@
 ﻿<template>
     <cat-view class="home-cart">
-        <template v-slot:header>
+        <template #header>
             <cat-navbar title="购物车"></cat-navbar>
         </template>
         <van-notice-bar left-icon="volume-o" text="框架由 teamwei@李兔饼 构建，支持快速开发！有问题请留言或联系！" />
@@ -32,6 +32,6 @@
     });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
     @import "./index.less";
 </style>

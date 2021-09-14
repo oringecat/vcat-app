@@ -1,6 +1,6 @@
 ﻿<template>
     <cat-view class="user-index">
-        <template v-slot:header>
+        <template #header>
             <cat-navbar title="李兔饼"></cat-navbar>
         </template>
     </cat-view>
